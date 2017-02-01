@@ -14,21 +14,23 @@ router.render = function (req, res) {
 
 server.use(middlewares)
 
+server.use(jsonServer.rewriter({
+  '/questionnaires/:questionnaireId/versions/:versionId': '/versions/:versionId'
+}));
+
 server.use(jsonServer.bodyParser)
 server.use(function (req, res, next) {
   console.log(req.body, res.body);
   if (req.method === 'POST') {
-    req.body.createdAt = Date.now()
+    req.body.dateCreated = Date.now();
+    req.body.lastUpdated = Date.now();
+    req.body.creator = 'John Smith';
   }
   // Continue to JSON Server router
   next()
 })
 
-server.use('/questionnaires/:id/versions/:version', function(req, res){
-  res.redirect('/versions/' + req.params.version);
-});
-
-server.use(router)
+server.use(router);
 
 server.listen(4000, function () {
   console.log('***************************************');
