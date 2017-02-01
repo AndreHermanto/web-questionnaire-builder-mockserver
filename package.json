@@ -1,0 +1,23 @@
+{
+  "name": "web-questionnaire-builder-mockserver",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Json-Server addon for Web-Questionnaire-builder app",
+  "main": "mockServer/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run json-server",
+    "json-server": "node mockServer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://chiyu@kccg.garvan.org.au/bitbucket/scm/gs/web-questionnaire-builder-mockserver.git"
+  },
+  "dependencies": {
+    "json-schema-faker": "^0.4.0",
+    "json-server": "^0.9.4"
+  },
+  "publishConfig": {
+    "registry": "https://kccg.garvan.org.au/nexus/repository/npm-registry/"
+  }
+}
