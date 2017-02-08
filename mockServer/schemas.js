@@ -204,13 +204,96 @@ var ontologySchema = {
 var hpoCrStatusSchema = {
   "type": "object",
   "properties": {
-    "hpo-cr": {
+    "id": {
+      "type": "string",
+      "faker": "random.uuid"
+    },
+    "contextId": {
+      "type": "string",
+      "enum": [
+        "5893c8cdf381950f56db2881"
+      ]
+    },
+    "key": {
+      "type": "string",
+      "enum": [
+        "hpo_concept_recognition_enabled"
+      ]
+    },
+    "value": {
       "type": "boolean"
     }
   },
   "required": [
-  "hpo-cr"
+    "id",
+    "contextId",
+    "key",
+    "value"
   ]
+}
+
+var selectDatasourceIdSchema = {
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "faker": "lorem.word"
+      },
+      "displayLabel": {
+        "type": "string",
+        "faker": "lorem.words"
+      },
+      "label": {
+        "type": "string",
+        "faker": "lorem.words"
+      },
+      "type": {
+        "type": "string",
+        "faker": "lorem.word"
+      }
+    },
+    "required": ["id", "displayLabel", "label", "type"]
+  }
+}
+
+var allDatasourceSchema = {
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string",
+        "faker": "lorem.word"
+      },
+      "displayLabel": {
+        "type": "string",
+        "faker": "lorem.words"
+      },
+      "label": {
+        "type": "string",
+        "faker": "lorem.words"
+      },
+      "type": {
+        "type": "string",
+        "faker": "lorem.word"
+      },
+      "datasourceId": {
+        "type": "string",
+        "faker": "lorem.word"
+      },
+      "datasourceTitle": {
+        "type": "string",
+        "faker": "lorem.word"
+      },
+      "datasourceVersionId": {
+        "type": "string",
+        "faker": "lorem.word"
+      }
+    },
+    "required": ["id", "displayLabel", "label", "type", "datasourceId", "datasourceTitle", "datasourceVersionId"]
+  }
 }
 
 exports.questionnaire = questionnaireSchema;
@@ -218,3 +301,5 @@ exports.questionnaireVersion = questionnaireVersionSchema;
 exports.questionnaireExport = questionnaireExportSchema;
 exports.hpoCrStatus = hpoCrStatusSchema;
 exports.ontology = ontologySchema;
+exports.selectDatasourceId = selectDatasourceIdSchema;
+exports.allDatasource = allDatasourceSchema;

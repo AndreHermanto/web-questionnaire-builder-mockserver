@@ -7,7 +7,9 @@ module.exports = function() {
     'versions': [],
     'export': [],
     'ontologies': [],
-    'system':[]
+    'system':[],
+    'selectDatasourceId':[],
+    'allDatasource':[]
   };
   for (var i = 0; i < 3; i++) {
     var questionnaire = jsf(schemas.questionnaire);
@@ -46,6 +48,12 @@ module.exports = function() {
   for(var i = 0; i < 10; i++){
     var ontology = jsf(schemas.ontology);
     data.ontologies.push(ontology);
+
+    var selectDatasourceId = jsf(schemas.selectDatasourceId);
+    data.selectDatasourceId.push(selectDatasourceId);
+
+    var allDatasource = jsf(schemas.allDatasource)
+    data.allDatasource.push(allDatasource);
   }
 
   var hpoCrStatus = jsf(schemas.hpoCrStatus);
