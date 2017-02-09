@@ -1,7 +1,6 @@
 {
   "name": "web-questionnaire-builder-mockserver",
   "version": "0.0.3",
-  "private": true,
   "description": "Json-Server addon for Web-Questionnaire-builder app",
   "main": "mockServer/index.js",
   "scripts": {
