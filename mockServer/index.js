@@ -15,7 +15,11 @@ router.render = function (req, res) {
 server.use(middlewares)
 
 server.use(jsonServer.rewriter({
-  '/questionnaires/:questionnaireId/versions/:versionId': '/versions/:versionId'
+  '/questionnaires/:questionnaireId/versions/:versionId': '/versions/:versionId',
+  '/contexts/:contextId/preferences?key=:key': '/contexts',
+  '/contexts/:contextId/preferences/:id': '/contexts/:id',
+  '/prefix-search/datasource/:prefix': '/allDatasource',
+  '/prefix-search/datasource/:datasourceId/:prefix': '/selectDatasourceId'
 }));
 
 server.use(jsonServer.bodyParser)
