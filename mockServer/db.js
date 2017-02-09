@@ -7,7 +7,7 @@ module.exports = function() {
     'versions': [],
     'export': [],
     'ontologies': [],
-    'system':[],
+    'contexts':[],
     'selectDatasourceId':[],
     'allDatasource':[]
   };
@@ -57,7 +57,7 @@ module.exports = function() {
   data.allDatasource.push(allDatasource);
 
   var hpoCrStatus = jsf(schemas.hpoCrStatus);
-  data.system.push(hpoCrStatus);
+  data.contexts.push(hpoCrStatus);
 
   return data;
 }
