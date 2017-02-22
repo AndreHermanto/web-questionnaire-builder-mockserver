@@ -33,8 +33,8 @@ var questionnaireSchema = {
   },
   "required": [
     "id",
-    "dateCreated", 
-    "lastUpdated", 
+    "dateCreated",
+    "lastUpdated",
     "status",
     "currentTitle",
     "currentVersionId",
@@ -68,7 +68,7 @@ var questionnaireVersionSchema = {
     },
     "body": {
       "type": "string",
-      "faker": "lorem.paragraphs"
+      "enum": ["[]"]
     },
     "creator": {
       "type": "string",
