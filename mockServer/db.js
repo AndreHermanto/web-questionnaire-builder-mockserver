@@ -6,7 +6,7 @@ module.exports = function() {
     'questionnaires': [],
     'versions': [],
     'export': [],
-    'ontologies': [],
+    'datasources': [],
     'contexts':[],
     'selectDatasourceId':[],
     'allDatasource':[]
@@ -47,7 +47,7 @@ module.exports = function() {
 
   for(var i = 0; i < 10; i++){
     var ontology = jsf(schemas.ontology);
-    data.ontologies.push(ontology);
+    data.datasources.push(ontology);
   }
 
   var selectDatasourceId = jsf(schemas.selectDatasourceId);
