@@ -164,6 +164,10 @@ var ontologySchema = {
   "title": "Ontology",
   "type": "object",
   "properties": {
+      "id": {
+        "type": "string",
+        "faker": "random.uuid"
+      },
       "acronym": {
         "type": "string",
         "faker": "lorem.word"
@@ -181,11 +185,14 @@ var ontologySchema = {
         "minimum": 0,
         "maximum": 30
       },
+      "autoUpdate": {
+        "type": "boolean"
+      },
       "url": {
         "type": "string",
         "faker": "internet.url"
       },
-      "specDefinition": {
+      "filterByPrefix": {
         "type": "string",
         "faker": "internet.url"
       },
@@ -198,7 +205,7 @@ var ontologySchema = {
         "faker": "date.recent"
       }
   },
-  "required": ["acronym", "title", "updatePattern", "url", "specDefinition"]
+  "required": ["id", "acronym", "title", "updatePattern", "autoUpdate"]
 }
 
 var hpoCrStatusSchema = {
