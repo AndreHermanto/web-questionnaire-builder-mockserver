@@ -4,6 +4,7 @@ var schemas = require('./schemas.js');
 module.exports = function() {
   var data = {
     'questionnaires': [],
+    'responses': [],
     'versions': [],
     'export': [],
     'datasources': [],
@@ -32,10 +33,10 @@ module.exports = function() {
         }
       }
       //make the export response base on questionnair id / currentVersionId
-      var questionnaireExport = jsf(schemas.questionnaireExport);
-      questionnaireExport.questionnaireId = questionnaire.id;
-      questionnaireExport.questionnaireVersionId = questionnaire.currentVersionId;
-      data.export.push(questionnaireExport);
+      // var questionnaireExport = jsf(schemas.questionnaireExport);
+      // questionnaireExport.questionnaireId = questionnaire.id;
+      // questionnaireExport.questionnaireVersionId = questionnaire.currentVersionId;
+      // data.export.push(questionnaireExport);
       // save the questionnaire
       data.questionnaires.push(questionnaire);
     }
