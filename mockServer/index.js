@@ -18,9 +18,9 @@ server.use(jsonServer.rewriter({
   '/questionnaires/:questionnaireId/versions/:versionId': '/versions/:versionId',
   '/contexts/:contextId/preferences?key=:key': '/contexts',
   '/contexts/:contextId/preferences/:id': '/contexts/:id',
-  '/prefix-search/datasource/:prefix': '/allDatasource',
-  '/prefix-search/datasource/:datasourceId/:prefix': '/selectDatasourceId',
-  '/responses/export' : '/responses'
+  '/responses/export' : '/responses',
+  '/datasources/:datasourceId/concepts/:conceptId': '/concepts',
+  '/prefix-search?prefix=:prefix':'/prefix'
 }));
 
 server.use(jsonServer.bodyParser)

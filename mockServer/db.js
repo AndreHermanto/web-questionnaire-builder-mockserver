@@ -9,8 +9,8 @@ module.exports = function() {
     'export': [],
     'datasources': [],
     'contexts':[],
-    'selectDatasourceId':[],
-    'allDatasource':[]
+    'concepts':[],
+    'prefix':[]
   };
   for (var i = 0; i < 3; i++) {
     var questionnaire = jsf(schemas.questionnaire);
@@ -49,6 +49,8 @@ module.exports = function() {
   for(var i = 0; i < 10; i++){
     var ontology = jsf(schemas.ontology);
     data.datasources.push(ontology);
+    var concepts = jsf(schemas.concepts);
+    data.concepts.push(concepts);
   }
 
   for(var i = 0; i < 3; i++){
@@ -56,11 +58,10 @@ module.exports = function() {
     data.responses.push(response)
   }
 
-  var selectDatasourceId = jsf(schemas.selectDatasourceId);
-  data.selectDatasourceId.push(selectDatasourceId);
-
-  var allDatasource = jsf(schemas.allDatasource)
-  data.allDatasource.push(allDatasource);
+  for(var i = 0; i < 10; i++){
+    var prefix = jsf(schemas.prefix)
+    data.prefix.push(prefix);
+  }
 
   var hpoCrStatus = jsf(schemas.hpoCrStatus);
   data.contexts.push(hpoCrStatus);
