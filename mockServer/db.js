@@ -51,6 +51,11 @@ module.exports = function() {
     data.datasources.push(ontology);
   }
 
+  for(var i = 0; i < 3; i++){
+    var response = jsf(schemas.responseSchema);
+    data.responses.push(response)
+  }
+
   var selectDatasourceId = jsf(schemas.selectDatasourceId);
   data.selectDatasourceId.push(selectDatasourceId);
 
