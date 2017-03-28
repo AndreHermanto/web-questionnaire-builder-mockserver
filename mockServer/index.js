@@ -20,7 +20,7 @@ server.use(jsonServer.rewriter({
   '/contexts/:contextId/preferences/:id': '/contexts/:id',
   '/responses/export' : '/responses',
   '/datasources/:datasourceId/concepts/:conceptId': '/concepts',
-  '/prefix-search?prefix=:prefix':'/prefix'
+  '/prefix-search?prefix=:prefix':'/prefix-search'
 }));
 
 server.use(jsonServer.bodyParser)

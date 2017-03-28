@@ -10,7 +10,7 @@ module.exports = function() {
     'datasources': [],
     'contexts':[],
     'concepts':[],
-    'prefix':[]
+    'prefix-search':[]
   };
   for (var i = 0; i < 3; i++) {
     var questionnaire = jsf(schemas.questionnaire);
@@ -55,12 +55,10 @@ module.exports = function() {
 
   for(var i = 0; i < 3; i++){
     var response = jsf(schemas.responseSchema);
-    data.responses.push(response)
-  }
+    data.responses.push(response);
 
-  for(var i = 0; i < 10; i++){
     var prefix = jsf(schemas.prefix)
-    data.prefix.push(prefix);
+    data['prefix-search'].push(prefix);
   }
 
   var hpoCrStatus = jsf(schemas.hpoCrStatus);
