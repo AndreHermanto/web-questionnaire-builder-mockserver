@@ -19,7 +19,8 @@ server.use(jsonServer.rewriter({
   '/contexts/:contextId/preferences?key=:key': '/contexts',
   '/contexts/:contextId/preferences/:id': '/contexts/:id',
   '/prefix-search/datasource/:prefix': '/allDatasource',
-  '/prefix-search/datasource/:datasourceId/:prefix': '/selectDatasourceId'
+  '/prefix-search/datasource/:datasourceId/:prefix': '/selectDatasourceId',
+  '/responses/export' : '/responses'
 }));
 
 server.use(jsonServer.bodyParser)
