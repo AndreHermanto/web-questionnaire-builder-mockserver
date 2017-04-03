@@ -51,8 +51,19 @@ module.exports = function() {
     data.datasources.push(ontology);
   }
 
-  for(var i = 0; i < 3; i++){
+  for(var i = 0; i < 10; i++){
     var response = jsf(schemas.responseSchema);
+    if(i<3){
+      response.dateCreated = "Wed Mar 02 2017 10:00:00 GMT+1000 (AEST)";
+    }else if(i<7){
+      response.dateCreated = "Wed Mar 10 2017 10:00:00 GMT+1000 (AEST)";
+    }
+    else if(i<9){
+      response.dateCreated = "Wed Mar 17 2017 10:00:00 GMT+1000 (AEST)";
+    }
+    else{
+      response.dateCreated = "Wed Mar 25 2017 10:00:00 GMT+1000 (AEST)"
+    }
     data.responses.push(response)
   }
 

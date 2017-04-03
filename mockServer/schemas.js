@@ -6,7 +6,8 @@ var responseSchema = {
     "userId",
     "questionnaireId",
     "questionnaireVersionId",
-    "completed"
+    "completed",
+    "dateCreated"
   ],
   "properties": {
     "id": {
@@ -74,6 +75,10 @@ var responseSchema = {
           }
         }
       }
+    },
+    "dateCreated":{
+      "type": "string",
+      "faker": "date.recent"
     }
   }
 };
