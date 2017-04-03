@@ -101,7 +101,7 @@ var questionnaireSchema = {
     },
     "status": {
       "type": "string",
-      "faker": "lorem.word"
+      "faker": "lorem.words"
     },
     "currentTitle": {
       "type": "string",
@@ -109,7 +109,7 @@ var questionnaireSchema = {
     },
     "creator": {
       "type": "string",
-      "faker": "lorem.word"
+      "faker": "lorem.words"
     }
   },
   "required": [
@@ -153,7 +153,7 @@ var questionnaireVersionSchema = {
     },
     "creator": {
       "type": "string",
-      "faker": "lorem.word"
+      "faker": "lorem.words"
     }
   },
   "required": [
@@ -171,41 +171,56 @@ var ontologySchema = {
   "title": "Ontology",
   "type": "object",
   "properties": {
-    "acronym": {
-      "type": "string",
-      "faker": "lorem.word"
-    },
-    "title": {
-      "type": "string",
-      "faker": "lorem.words"
-    },
-    "description": {
-      "type": "string",
-      "faker": "lorem.sentence"
-    },
-    "updatePattern": {
-      "type": "integer",
-      "minimum": 0,
-      "maximum": 30
-    },
-    "url": {
-      "type": "string",
-      "faker": "internet.url"
-    },
-    "specDefinition": {
-      "type": "string",
-      "faker": "internet.url"
-    },
-    "dateCreated": {
-      "type": "string",
-      "faker": "date.recent"
-    },
-    "lastUpdated": {
-      "type": "string",
-      "faker": "date.recent"
-    }
+      "id": {
+        "type": "string",
+        "faker": "random.uuid"
+      },
+      "acronym": {
+        "type": "string",
+        "faker": "lorem.words"
+      },
+      "title": {
+        "type": "string",
+        "faker": "lorem.words"
+      },
+      "description": {
+        "type": "string",
+        "faker": "lorem.sentence"
+      },
+      "updatePattern": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 30
+      },
+      "url": {
+        "type": "string",
+        "faker": "internet.url"
+      },
+      "filterByPrefix": {
+        "type": "string",
+        "faker": "internet.url"
+      },
+      "dateCreated": {
+        "type": "string",
+        "faker": "date.recent"
+      },
+      "lastUpdated": {
+        "type": "string",
+        "faker": "date.recent"
+      },
+      "autoUpdate": {
+        "type": "boolean"
+      },
+      "creator": {
+        "type": "string",
+        "faker": "lorem.words"
+      },
+      "lastUpdatedBy": {
+        "type": "string",
+        "faker": "lorem.words"
+      }
   },
-  "required": ["acronym", "title", "updatePattern", "url", "specDefinition"]
+  "required": ["id", "acronym", "title", "updatePattern", "url", "filterByPrefix"]
 }
 
 var hpoCrStatusSchema = {
@@ -237,7 +252,7 @@ var selectDatasourceIdSchema = {
     "properties": {
       "id": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       },
       "displayLabel": {
         "type": "string",
@@ -249,7 +264,7 @@ var selectDatasourceIdSchema = {
       },
       "type": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       }
     },
     "required": ["id", "displayLabel", "label", "type"]
@@ -263,7 +278,7 @@ var allDatasourceSchema = {
     "properties": {
       "id": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       },
       "displayLabel": {
         "type": "string",
@@ -275,19 +290,19 @@ var allDatasourceSchema = {
       },
       "type": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       },
       "datasourceId": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       },
       "datasourceTitle": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       },
       "datasourceVersionId": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       }
     },
     "required": [
