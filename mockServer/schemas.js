@@ -220,7 +220,7 @@ var ontologySchema = {
         "faker": "lorem.words"
       }
   },
-  "required": ["id", "acronym", "title", "updatePattern", "url", "filterByPrefix"]
+  "required": ["id", "acronym", "title", "updatePattern", "filterByPrefix"]
 }
 
 var hpoCrStatusSchema = {
