@@ -1,6 +1,6 @@
 var jsf = require('json-schema-faker');
 var schemas = require('./schemas.js');
-
+var conceptsSchema = require('./conceptsSchema.js');
 module.exports = function() {
   var data = {
     'questionnaires': [],
@@ -49,16 +49,21 @@ module.exports = function() {
   for(var i = 0; i < 10; i++){
     var ontology = jsf(schemas.ontology);
     data.datasources.push(ontology);
-    var concepts = jsf(schemas.concepts);
+  }
+
+  for(var i = 0; i < 10; i++){
+    var concepts = jsf(conceptsSchema.concepts);
     data.concepts.push(concepts);
+    if(i < 3) {
+      var prefix = jsf(conceptsSchema.prefix)
+      prefix.uri = concepts.uri;
+      data['prefix-search'].push(prefix);
+    }
   }
 
   for(var i = 0; i < 3; i++){
     var response = jsf(schemas.responseSchema);
     data.responses.push(response);
-
-    var prefix = jsf(schemas.prefix)
-    data['prefix-search'].push(prefix);
   }
 
   var hpoCrStatus = jsf(schemas.hpoCrStatus);

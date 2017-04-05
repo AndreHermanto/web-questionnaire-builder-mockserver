@@ -230,96 +230,10 @@ var hpoCrStatusSchema = {
   "required": ["id", "contextId", "key", "value"]
 }
 
-var conceptsSchema = {
-  "type": "object",
-  "properties": {
-    "uri": {
-      "type": "string",
-      "faker": "lorem.words"
-    },
-    "label": {
-      "type": "string",
-      "faker": "lorem.words"
-    },
-    "type": {
-      "type": "string",
-      "faker": "lorem.words"
-    },
-    "dataSource": {
-      "type": "string",
-      "faker": "lorem.words"
-    },
-    "dataSourceVersion": {
-      "type": "string",
-      "faker": "lorem.words"
-    },
-    "synonyms": {
-      "type": "array",
-      "minItems": 0,
-      "items": {
-        "type": "string",
-        "faker": "lorem.words"
-      }
-    },
-    "altIds": {
-      "type": "array",
-      "minItems": 0,
-      "items": {
-        "type": "string",
-        "faker": "lorem.words"
-      }
-    },
-    "subclasses": {
-      "type": "array",
-      "minItems": 0,
-      "items": {
-        "type": "string",
-        "faker": "lorem.words"
-      }
-    },
-    "superclasses": {
-      "type": "array",
-      "minItems": 0,
-      "items": {
-        "type": "string",
-        "faker": "lorem.words"
-      }
-    }
-  },
-  "required": ["uri", "label", "type", "dataSource", "dataSourceVersion"]
-}
-
-var prefixSchema = {
-  "type": "object",
-  "properties": {
-    "displayLabel": {
-      "type": "string",
-      "faker": "lorem.words"
-    },
-    "preferredLabel": {
-      "type": "string",
-      "faker": "lorem.words"
-    },
-    "dataSource": {
-      "type": "string",
-      "faker": "lorem.words"
-    },
-    "synonyms": {
-      "type": "array",
-      "minItems": 0,
-      "items": {
-        "type": "string",
-        "faker": "lorem.words"
-      }
-    }
-  },
-  "required": ["displayLabel", "preferredLabel", "dataSource", "synonyms"]
-}
 
 exports.questionnaire = questionnaireSchema;
 exports.questionnaireVersion = questionnaireVersionSchema;
 exports.responseSchema = responseSchema;
 exports.hpoCrStatus = hpoCrStatusSchema;
 exports.ontology = ontologySchema;
-exports.concepts = conceptsSchema;
-exports.prefix = prefixSchema;
+
