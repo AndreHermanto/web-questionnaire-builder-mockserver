@@ -26,7 +26,7 @@ server.use(jsonServer.rewriter({
   '/contexts/:contextId/preferences?key=:key': '/contexts',
   '/contexts/:contextId/preferences/:id': '/contexts/:id',
   '/responses/export' : '/responses',
-  '/datasources/:datasourceId/concepts/:conceptId': '/concepts',
+  '/concepts/:conceptId': '/concepts',
   '/prefix-search?prefix=:prefix':'/prefix-search'
 }));
 
