@@ -389,8 +389,59 @@ var prefixSchema = {
       "faker": "lorem.words"
     },
     "dataSource": {
-      "type": "string",
-      "faker": "lorem.words"
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "faker": "random.uuid"
+        },
+        "acronym": {
+          "type": "string",
+          "faker": "lorem.words"
+        },
+        "title": {
+          "type": "string",
+          "faker": "lorem.words"
+        },
+        "updatePattern": {
+          "type": "string",
+          "faker": "random.number"
+        },
+        "autoUpdate": {
+          "type": "boolean"
+        },
+        "url": {
+          "type":"string",
+          "faker": "internet.url"
+        },
+        "filterByPrefix": {
+          "type": "string",
+          "faker": "lorem.words"
+        },
+        "description": {
+          "type": "string",
+          "faker": "lorem.words"
+        },
+        "dateCreated": {
+          "type": "string",
+          "faker": "date.recent"
+        },
+        "lastUpdated": {
+          "type": "string",
+          "faker": "date.recent"
+        },
+        "creator": {
+          "type": "string",
+          "faker": "lorem.words"
+        },
+        "lastUpdatedBy": {
+          "type": "string",
+          "faker": "lorem.words"
+        }
+      },
+      "required": ["id", "acronym", "title", "updatePattern", "autoUpdate",
+      "url", "filterByPrefix", "description", "dateCreated", "lastUpdated",
+      "creator", "lastUpdatedBy"]
     },
     "synonyms": {
       "type": "array",
