@@ -13,6 +13,7 @@ module.exports = function() {
     'concepts':[],
     'prefix-search':[],
     'login':[],
+    'logout':[],
     'me':[]
   };
   for (var i = 0; i < 3; i++) {
