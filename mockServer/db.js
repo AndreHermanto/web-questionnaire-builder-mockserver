@@ -1,6 +1,7 @@
 var jsf = require('json-schema-faker');
 var schemas = require('./schemas.js');
 var conceptsSchema = require('./conceptsSchema.js');
+var authSchema = require('./authSchema.js');
 module.exports = function() {
   var data = {
     'questionnaires': [],
@@ -10,7 +11,9 @@ module.exports = function() {
     'datasources': [],
     'contexts':[],
     'concepts':[],
-    'prefix-search':[]
+    'prefix-search':[],
+    'login':[],
+    'me':[]
   };
   for (var i = 0; i < 3; i++) {
     var questionnaire = jsf(schemas.questionnaire);
@@ -68,6 +71,8 @@ module.exports = function() {
 
   var hpoCrStatus = jsf(schemas.hpoCrStatus);
   data.contexts.push(hpoCrStatus);
+  var me = jsf(authSchema.auth);
+  data.me.push(me);
 
   return data;
 }
