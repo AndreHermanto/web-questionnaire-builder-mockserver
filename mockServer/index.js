@@ -33,6 +33,7 @@ server.use(function (req, res, next) {
   }
   if(req.url === '/login') {
     res.cookie = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZXMiOlswLDFdLCJuYW1lIjoiZmlyc3QgbGFzdCIsImV4cCI6MTQ4NDg3MTg5MiwiaWF0IjoxNDg0ODcwMDkyfQ.E5ERwM8Eb8OfVAsPcvn_rKf_5_7giWvjIKF-w6CfvaGGWdYjmMKXhdx0rz1vDT50nGU2mSgNtcfR2nK8ImjG_A';
+    req.body = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZXMiOlswLDFdLCJuYW1lIjoiZmlyc3QgbGFzdCIsImV4cCI6MTQ4NDg3MTg5MiwiaWF0IjoxNDg0ODcwMDkyfQ.E5ERwM8Eb8OfVAsPcvn_rKf_5_7giWvjIKF-w6CfvaGGWdYjmMKXhdx0rz1vDT50nGU2mSgNtcfR2nK8ImjG_A';
   }
   // Continue to JSON Server router
   next()
