@@ -14,6 +14,13 @@ router.render = function (req, res) {
 
 server.use(middlewares)
 
+// add route for logging in
+server.post('/login', (req, res) => {
+  // username: test
+  // password: test
+  res.send('eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0Iiwicm9sZXMiOlsiZGVmYXVsdD1BRE1JTjs6OiJdLCJzdXBlclJvbGUiOiJVU0VSIiwiZXhwIjoxNDk1MDk4MjU3LCJpYXQiOjE0OTUwOTY0NTd9.bgpMrZ2IoMCvBFtp6-sAPlTh9lrMhHHZgDp0JWY7-MdAFnM-WISfE15K5TTiQGREQOTL5v7Lie6nPkc7PeqiEA');
+})
+
 server.use(jsonServer.rewriter({
   '/questionnaires/:questionnaireId/versions/:versionId': '/versions/:versionId',
   '/contexts/:contextId/preferences?key=:key': '/contexts',
@@ -31,16 +38,13 @@ server.use(function (req, res, next) {
     req.body.lastUpdated = Date.now();
     req.body.creator = 'John Smith';
   }
-  if(req.url === '/login') {
-    req.body = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyIiwicm9sZXMiOlswLDFdLCJuYW1lIjoiZmlyc3QgbGFzdCIsImV4cCI6MTQ4NDg3MTg5MiwiaWF0IjoxNDg0ODcwMDkyfQ.E5ERwM8Eb8OfVAsPcvn_rKf_5_7giWvjIKF-w6CfvaGGWdYjmMKXhdx0rz1vDT50nGU2mSgNtcfR2nK8ImjG_A';
-  }
   // Continue to JSON Server router
   next()
 })
 
 server.use(router);
 
-server.listen(4000, function () {
+server.listen(4001, function () {
   console.log('***************************************');
   console.log('* Json-Server is running on port 4000 *');
   console.log('***************************************');
