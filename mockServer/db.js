@@ -12,9 +12,7 @@ module.exports = function() {
     'contexts':[],
     'concepts':[],
     'prefix-search':[],
-    'login':[],
-    'logout':[],
-    'me':[]
+    'me': null
   };
   for (var i = 0; i < 3; i++) {
     var questionnaire = jsf(schemas.questionnaire);
@@ -72,8 +70,10 @@ module.exports = function() {
 
   var hpoCrStatus = jsf(schemas.hpoCrStatus);
   data.contexts.push(hpoCrStatus);
+
+  // add me 
   var me = jsf(authSchema.auth);
-  data.me.push(me);
+  data.me = me;
 
   return data;
 }
