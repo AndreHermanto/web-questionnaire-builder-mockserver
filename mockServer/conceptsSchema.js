@@ -13,7 +13,7 @@ var conceptsSchema = {
       "type": "string",
       "faker": "lorem.words"
     },
-    "dataSource": {
+    "datasource": {
       "type": "object",
       "properties": {
         "id": {
@@ -124,7 +124,7 @@ var conceptsSchema = {
             "type": "string",
             "faker": "lorem.words"
           },
-          "dataSource": {
+          "datasource": {
             "type": "object",
             "properties": {
               "id": {
@@ -234,7 +234,7 @@ var conceptsSchema = {
             }
           }
         },
-        "required": ["uri", "label", "type", "dataSource", "dataSourceVersion"]
+        "required": ["uri", "label", "type", "datasource", "dataSourceVersion"]
       }
     },
     "superclasses": {
@@ -255,7 +255,7 @@ var conceptsSchema = {
             "type": "string",
             "faker": "lorem.words"
           },
-          "dataSource": {
+          "datasource": {
             "type": "object",
             "properties": {
               "id": {
@@ -365,11 +365,11 @@ var conceptsSchema = {
             }
           }
         },
-        "required": ["uri", "label", "type", "synonyms", "altIds", "dataSource", "dataSourceVersion"]
+        "required": ["uri", "label", "type", "synonyms", "altIds", "datasource", "dataSourceVersion"]
       }
     }
   },
-  "required": ["uri", "label", "type", "dataSource", "dataSourceVersion"]
+  "required": ["uri", "label", "type", "datasource", "dataSourceVersion"]
 }
 
 
@@ -388,12 +388,16 @@ var prefixSchema = {
       "type": "string",
       "faker": "lorem.words"
     },
-    "dataSource": {
+    "datasource": {
       "type": "object",
       "properties": {
         "id": {
           "type": "string",
           "faker": "random.uuid"
+        },
+        "version": {
+          "type": "string",
+          "faker": "lorem.words"
         },
         "acronym": {
           "type": "string",
@@ -439,7 +443,7 @@ var prefixSchema = {
           "faker": "lorem.words"
         }
       },
-      "required": ["id", "acronym", "title", "updatePattern", "autoUpdate",
+      "required": ["id", "version", "acronym", "title", "updatePattern", "autoUpdate",
       "url", "filterByPrefix", "description", "dateCreated", "lastUpdated",
       "creator", "lastUpdatedBy"]
     },
@@ -452,7 +456,7 @@ var prefixSchema = {
       }
     }
   },
-  "required": ["uri", "displayLabel", "preferredLabel", "dataSource", "synonyms"]
+  "required": ["uri", "displayLabel", "preferredLabel", "datasource", "synonyms"]
 }
 
 exports.concepts = conceptsSchema;

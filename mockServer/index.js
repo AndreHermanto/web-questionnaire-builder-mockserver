@@ -23,6 +23,7 @@ server.post('/login', (req, res) => {
 
 server.use(jsonServer.rewriter({
   '/questionnaires/:questionnaireId/versions/:versionId': '/versions/:versionId',
+  '/contexts/:contextId/preferences': '/contexts',
   '/contexts/:contextId/preferences?key=:key': '/contexts',
   '/contexts/:contextId/preferences/:id': '/contexts/:id',
   '/responses/export' : '/responses',
