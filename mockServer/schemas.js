@@ -139,7 +139,7 @@ var questionnaireVersionSchema = {
       "type": "string",
       "faker": "lorem.sentence"
     },
-    "date": {
+    "dateCreated": {
       "type": "string",
       "faker": "date.recent"
     },
@@ -160,7 +160,7 @@ var questionnaireVersionSchema = {
     "id",
     "questionnaireId",
     "title",
-    "date",
+    "dateCreated",
     "creator",
     "creatorName",
     "body"
