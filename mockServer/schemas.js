@@ -139,10 +139,6 @@ var questionnaireVersionSchema = {
       "type": "string",
       "faker": "lorem.sentence"
     },
-    "description": {
-      "type": "string",
-      "faker": "lorem.sentences"
-    },
     "date": {
       "type": "string",
       "faker": "date.recent"
@@ -154,15 +150,19 @@ var questionnaireVersionSchema = {
     "creator": {
       "type": "string",
       "faker": "lorem.words"
-    }
+    },
+    "creatorName": {
+      "type": "string",
+      "faker": "lorem.words"
+    },
   },
   "required": [
     "id",
     "questionnaireId",
     "title",
-    "description",
     "date",
     "creator",
+    "creatorName",
     "body"
   ]
 };
