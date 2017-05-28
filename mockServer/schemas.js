@@ -110,6 +110,10 @@ var questionnaireSchema = {
     "creator": {
       "type": "string",
       "faker": "lorem.words"
+    },
+    "creatorName": {
+      "type": "string",
+      "faker": "lorem.words"
     }
   },
   "required": [
@@ -119,7 +123,8 @@ var questionnaireSchema = {
     "status",
     "currentTitle",
     "currentVersionId",
-    "creator"
+    "creator",
+    "creatorName"
   ]
 };
 
