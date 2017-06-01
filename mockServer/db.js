@@ -2,6 +2,8 @@ var jsf = require('json-schema-faker');
 var schemas = require('./schemas.js');
 var conceptsSchema = require('./conceptsSchema.js');
 var authSchema = require('./authSchema.js');
+var consentSchema = require('./consentSchema.js');
+
 module.exports = function() {
   var data = {
     'questionnaires': [],
@@ -12,10 +14,14 @@ module.exports = function() {
     'contexts':[],
     'concepts':[],
     'prefix-search':[],
-    'me': null
+    'me': null,
+    'consent-types':[],
+    'consent-type-mappings':[]
   };
   for (var i = 0; i < 3; i++) {
     var questionnaire = jsf(schemas.questionnaire);
+    var consentTypes = jsf(consentSchema.consentTypes);
+    var consentTypeMappings = jsf(consentSchema.consentTypeMappings);
     if(questionnaire.currentVersionId !== undefined)
     {
       // now make some versions, for that questionnaire
@@ -46,6 +52,13 @@ module.exports = function() {
     {
       data.questionnaires.push(questionnaire);
     }
+
+    if(i < 1) {
+      consentTypeMappings.questionnaireId = questionnaire.id;
+      consentTypeMappings.consentTypeId = consentTypes.id;
+      data['consent-type-mappings'].push(consentTypeMappings);
+    }
+    data['consent-types'].push(consentTypes);
   }
 
   for(var i = 0; i < 10; i++){
@@ -74,6 +87,7 @@ module.exports = function() {
   // add me 
   var me = jsf(authSchema.auth);
   data.me = me;
+
 
   return data;
 }
