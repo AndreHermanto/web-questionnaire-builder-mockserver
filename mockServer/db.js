@@ -20,8 +20,6 @@ module.exports = function() {
   };
   for (var i = 0; i < 3; i++) {
     var questionnaire = jsf(schemas.questionnaire);
-    var consentTypes = jsf(consentSchema.consentTypes);
-    var consentTypeMappings = jsf(consentSchema.consentTypeMappings);
     if(questionnaire.currentVersionId !== undefined)
     {
       // now make some versions, for that questionnaire
@@ -52,13 +50,6 @@ module.exports = function() {
     {
       data.questionnaires.push(questionnaire);
     }
-
-    if(i < 1) {
-      consentTypeMappings.questionnaireId = questionnaire.id;
-      consentTypeMappings.consentTypeId = consentTypes.id;
-      data['consent-type-mappings'].push(consentTypeMappings);
-    }
-    data['consent-types'].push(consentTypes);
   }
 
   for(var i = 0; i < 10; i++){
@@ -88,6 +79,20 @@ module.exports = function() {
   var me = jsf(authSchema.auth);
   data.me = me;
 
+  for(var i = 0; i < 10; i++) {
+    var consentTypes = jsf(consentSchema.consentTypes);
+    data['consent-types'].push(consentTypes);
+  }
 
+  var tempConsentTypes = data['consent-types'];
+
+  for(var i = 0; i < tempConsentTypes.length; i++) {
+    var consentTypeMappings = jsf(consentSchema.consentTypeMappings);
+    if(i < 3) {
+      consentTypeMappings.questionnaireId = questionnaire.id;
+      consentTypeMappings.consentTypeId = tempConsentTypes[i].id;
+      data['consent-type-mappings'].push(consentTypeMappings);
+    }
+  }
   return data;
 }
