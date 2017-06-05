@@ -1,15 +1,22 @@
 var jsf = require('json-schema-faker');
 var schemas = require('./schemas.js');
+var conceptsSchema = require('./conceptsSchema.js');
+var authSchema = require('./authSchema.js');
+var consentSchema = require('./consentSchema.js');
 
 module.exports = function() {
   var data = {
     'questionnaires': [],
+    'responses': [],
     'versions': [],
     'export': [],
     'datasources': [],
     'contexts':[],
-    'selectDatasourceId':[],
-    'allDatasource':[]
+    'concepts':[],
+    'prefix-search':[],
+    'me': null,
+    'consent-types':[],
+    'consent-type-mappings':[]
   };
   for (var i = 0; i < 3; i++) {
     var questionnaire = jsf(schemas.questionnaire);
@@ -32,10 +39,10 @@ module.exports = function() {
         }
       }
       //make the export response base on questionnair id / currentVersionId
-      var questionnaireExport = jsf(schemas.questionnaireExport);
-      questionnaireExport.questionnaireId = questionnaire.id;
-      questionnaireExport.questionnaireVersionId = questionnaire.currentVersionId;
-      data.export.push(questionnaireExport);
+      // var questionnaireExport = jsf(schemas.questionnaireExport);
+      // questionnaireExport.questionnaireId = questionnaire.id;
+      // questionnaireExport.questionnaireVersionId = questionnaire.currentVersionId;
+      // data.export.push(questionnaireExport);
       // save the questionnaire
       data.questionnaires.push(questionnaire);
     }
@@ -50,14 +57,42 @@ module.exports = function() {
     data.datasources.push(ontology);
   }
 
-  var selectDatasourceId = jsf(schemas.selectDatasourceId);
-  data.selectDatasourceId.push(selectDatasourceId);
+  for(var i = 0; i < 10; i++){
+    var concepts = jsf(conceptsSchema.concepts);
+    data.concepts.push(concepts);
+    if(i < 3) {
+      var prefix = jsf(conceptsSchema.prefix)
+      prefix.uri = concepts.uri;
+      data['prefix-search'].push(prefix);
+    }
+  }
 
-  var allDatasource = jsf(schemas.allDatasource)
-  data.allDatasource.push(allDatasource);
+  for(var i = 0; i < 3; i++){
+    var response = jsf(schemas.responseSchema);
+    data.responses.push(response);
+  }
 
   var hpoCrStatus = jsf(schemas.hpoCrStatus);
   data.contexts.push(hpoCrStatus);
 
+  // add me 
+  var me = jsf(authSchema.auth);
+  data.me = me;
+
+  for(var i = 0; i < 10; i++) {
+    var consentTypes = jsf(consentSchema.consentTypes);
+    data['consent-types'].push(consentTypes);
+  }
+
+  var tempConsentTypes = data['consent-types'];
+
+  for(var i = 0; i < tempConsentTypes.length; i++) {
+    var consentTypeMappings = jsf(consentSchema.consentTypeMappings);
+    if(i < 3) {
+      consentTypeMappings.questionnaireId = questionnaire.id;
+      consentTypeMappings.consentTypeId = tempConsentTypes[i].id;
+      data['consent-type-mappings'].push(consentTypeMappings);
+    }
+  }
   return data;
 }

@@ -1,3 +1,84 @@
+var responseSchema = {
+  "title": "Response",
+  "type": "object",
+  "required": [
+    "id",
+    "userId",
+    "questionnaireId",
+    "questionnaireVersionId",
+    "completed"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "faker": "random.uuid"
+    },
+    "userId": {
+      "type": "string",
+      "faker": "random.uuid"
+    },
+    "questionnaireId": {
+      "type": "string",
+      "faker": "random.uuid"
+    },
+    "questionnaireVersionId": {
+      "type": "string",
+      "faker": "random.uuid"
+    },
+    "completed": {
+      "type": "boolean",
+      "faker": "random.boolean"
+    },
+    "answeredQuestions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "answers"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "faker": "random.uuid"
+          },
+          "answers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "text",
+                "followUp"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "faker": "random.uuid"
+                },
+                "text": {
+                  "type": "string",
+                  "faker": "lorem.words"
+                },
+                "followUp": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string",
+                      "faker": "lorem.words"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+};
+
+
 var questionnaireSchema = {
   "title": "Questionnaire",
   "type": "object",
@@ -20,7 +101,7 @@ var questionnaireSchema = {
     },
     "status": {
       "type": "string",
-      "faker": "lorem.word"
+      "faker": "lorem.words"
     },
     "currentTitle": {
       "type": "string",
@@ -28,7 +109,11 @@ var questionnaireSchema = {
     },
     "creator": {
       "type": "string",
-      "faker": "lorem.word"
+      "faker": "lorem.words"
+    },
+    "creatorName": {
+      "type": "string",
+      "faker": "lorem.words"
     }
   },
   "required": [
@@ -38,7 +123,8 @@ var questionnaireSchema = {
     "status",
     "currentTitle",
     "currentVersionId",
-    "creator"
+    "creator",
+    "creatorName"
   ]
 };
 
@@ -58,11 +144,7 @@ var questionnaireVersionSchema = {
       "type": "string",
       "faker": "lorem.sentence"
     },
-    "description": {
-      "type": "string",
-      "faker": "lorem.sentences"
-    },
-    "date": {
+    "dateCreated": {
       "type": "string",
       "faker": "date.recent"
     },
@@ -72,101 +154,35 @@ var questionnaireVersionSchema = {
     },
     "creator": {
       "type": "string",
-      "faker": "lorem.word"
-    }
+      "faker": "lorem.words"
+    },
+    "creatorName": {
+      "type": "string",
+      "faker": "lorem.words"
+    },
   },
   "required": [
     "id",
     "questionnaireId",
     "title",
-    "description",
-    "date",
+    "dateCreated",
     "creator",
+    "creatorName",
     "body"
   ]
 };
-
-var questionnaireExportSchema = {
-  "title": "Response",
-  "type": "object",
-  "properties": {
-    "id": {
-      "type": "string",
-      "faker": "random.uuid"
-    },
-    "questionnaireId": {
-      "type": "string",
-      "faker": "random.uuid"
-    },
-    "questionnaireVersionId": {
-      "type": "string",
-      "faker": "random.uuid"
-    },
-    "userId": {
-      "type": "string",
-      "faker": "random.uuid"
-    },
-    "responses": [
-    {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "question": {
-            "type": "string",
-            "faker": "lorem.sentence"
-          },
-          "answer": {
-            "type": "object",
-            "properties": {
-              "text": {
-                "type": "string",
-                "faker": "lorem.words"
-              },
-              "ontologyConcepts": {
-                "type": "array",
-                "minItems": 0,
-                "maxItems": 2,
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": "string",
-                      "faker": "random.uuid"
-                    },
-                    "label": {
-                      "type": "string",
-                      "faker": "lorem.word"
-                    }
-                  },
-                  "required": ["id", "label"]
-                }
-              }
-            },
-            "required": ["text", "ontologyConcepts"]
-          }
-        },
-        "required": ["question", "answer"]
-      }
-    }
-    ]
-  },
-  "required": [
-  "id",
-  "userId",
-  "questionnaireId",
-  "questionnaireVersionId",
-  "responses"
-  ]
-}
 
 var ontologySchema = {
   "title": "Ontology",
   "type": "object",
   "properties": {
+      "id": {
+        "type": "string",
+        "faker": "random.uuid"
+      },
       "acronym": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       },
       "title": {
         "type": "string",
@@ -185,7 +201,7 @@ var ontologySchema = {
         "type": "string",
         "faker": "internet.url"
       },
-      "specDefinition": {
+      "filterByPrefix": {
         "type": "string",
         "faker": "internet.url"
       },
@@ -196,9 +212,20 @@ var ontologySchema = {
       "lastUpdated": {
         "type": "string",
         "faker": "date.recent"
+      },
+      "autoUpdate": {
+        "type": "boolean"
+      },
+      "creator": {
+        "type": "string",
+        "faker": "lorem.words"
+      },
+      "lastUpdatedBy": {
+        "type": "string",
+        "faker": "lorem.words"
       }
   },
-  "required": ["acronym", "title", "updatePattern", "url", "specDefinition"]
+  "required": ["id", "acronym", "title", "updatePattern", "filterByPrefix"]
 }
 
 var hpoCrStatusSchema = {
@@ -210,26 +237,17 @@ var hpoCrStatusSchema = {
     },
     "contextId": {
       "type": "string",
-      "enum": [
-        "5893c8cdf381950f56db2881"
-      ]
+      "enum": ["5893c8cdf381950f56db2881"]
     },
     "key": {
       "type": "string",
-      "enum": [
-        "hpo_concept_recognition_enabled"
-      ]
+      "enum": ["hpo_concept_recognition_enabled"]
     },
     "value": {
       "type": "boolean"
     }
   },
-  "required": [
-    "id",
-    "contextId",
-    "key",
-    "value"
-  ]
+  "required": ["id", "contextId", "key", "value"]
 }
 
 var selectDatasourceIdSchema = {
@@ -239,7 +257,7 @@ var selectDatasourceIdSchema = {
     "properties": {
       "id": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       },
       "displayLabel": {
         "type": "string",
@@ -251,7 +269,7 @@ var selectDatasourceIdSchema = {
       },
       "type": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       }
     },
     "required": ["id", "displayLabel", "label", "type"]
@@ -265,7 +283,7 @@ var allDatasourceSchema = {
     "properties": {
       "id": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       },
       "displayLabel": {
         "type": "string",
@@ -277,29 +295,36 @@ var allDatasourceSchema = {
       },
       "type": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       },
       "datasourceId": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       },
       "datasourceTitle": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       },
       "datasourceVersionId": {
         "type": "string",
-        "faker": "lorem.word"
+        "faker": "lorem.words"
       }
     },
-    "required": ["id", "displayLabel", "label", "type", "datasourceId", "datasourceTitle", "datasourceVersionId"]
+    "required": [
+      "id",
+      "displayLabel",
+      "label",
+      "type",
+      "datasourceId",
+      "datasourceTitle",
+      "datasourceVersionId"
+    ]
   }
 }
 
 exports.questionnaire = questionnaireSchema;
 exports.questionnaireVersion = questionnaireVersionSchema;
-exports.questionnaireExport = questionnaireExportSchema;
+exports.responseSchema = responseSchema;
 exports.hpoCrStatus = hpoCrStatusSchema;
 exports.ontology = ontologySchema;
-exports.selectDatasourceId = selectDatasourceIdSchema;
-exports.allDatasource = allDatasourceSchema;
+
