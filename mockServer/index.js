@@ -45,7 +45,7 @@ server.use(function (req, res, next) {
 
 server.use(router);
 
-server.listen(4001, function () {
+server.listen(4000, function () {
   console.log('***************************************');
   console.log('* Json-Server is running on port 4000 *');
   console.log('***************************************');
