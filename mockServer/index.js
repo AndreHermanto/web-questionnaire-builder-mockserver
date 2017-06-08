@@ -21,6 +21,10 @@ server.post('/login', (req, res) => {
   res.send('eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0Iiwicm9sZXMiOlsiZGVmYXVsdD1BRE1JTjs6OiJdLCJzdXBlclJvbGUiOiJVU0VSIiwiZXhwIjoxNDk1MDk4MjU3LCJpYXQiOjE0OTUwOTY0NTd9.bgpMrZ2IoMCvBFtp6-sAPlTh9lrMhHHZgDp0JWY7-MdAFnM-WISfE15K5TTiQGREQOTL5v7Lie6nPkc7PeqiEA');
 })
 
+server.get('/validate/timestamp/:timetamp', (req, res) => {
+  res.send(true);
+})
+
 server.use(jsonServer.rewriter({
   '/questionnaires/:questionnaireId/versions/:versionId': '/versions/:versionId',
   '/contexts/:contextId/preferences': '/contexts',

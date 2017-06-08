@@ -85,8 +85,7 @@ module.exports = function() {
   }
 
   var tempConsentTypes = data['consent-types'];
-
- var tempQuestionnaire = data['questionnaires'];
+  var tempQuestionnaire = data['questionnaires'];
 
   for(var i = 0; i < tempConsentTypes.length; i++) {
     var consentTypeMappings = jsf(consentSchema.consentTypeMappings);
