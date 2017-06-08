@@ -93,8 +93,6 @@ module.exports = function() {
     if(i < 3) {
       consentTypeMappings.questionnaireId = tempQuestionnaire[i].id;
       consentTypeMappings.consentTypeId = tempConsentTypes[i].id;
-    }
-    if(i < 8) {
       data['consent-type-mappings'].push(consentTypeMappings);
     }
   }
