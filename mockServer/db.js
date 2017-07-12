@@ -75,7 +75,7 @@ module.exports = function() {
   var hpoCrStatus = jsf(schemas.hpoCrStatus);
   data.contexts.push(hpoCrStatus);
 
-  // add me 
+  // add me
   var me = jsf(authSchema.auth);
   data.me = me;
 
@@ -85,15 +85,17 @@ module.exports = function() {
   }
 
   var tempConsentTypes = data['consent-types'];
-  var tempQuestionnaire = data['questionnaires'];
+  var tempQuestionnaires = data['questionnaires'];
 
-  for(var i = 0; i < tempConsentTypes.length; i++) {
+  // lets make 2 mappings
+  for(var i = 0; i < 2; i++) {
     var consentTypeMappings = jsf(consentSchema.consentTypeMappings);
-    if(i < 3) {
-      consentTypeMappings.questionnaireId = tempQuestionnaire[i].id;
-      consentTypeMappings.consentTypeId = tempConsentTypes[i].id;
-      data['consent-type-mappings'].push(consentTypeMappings);
-    }
+    consentTypeMappings.consentTypeId = tempConsentTypes[i].id;
+    consentTypeMappings.questionnaires = tempQuestionnaires.map(questionnaire => ({
+      questionnaireId: questionnaire.id,
+      versionPublished: questionnaire.currentVersionId
+    }));
+    data['consent-type-mappings'].push(consentTypeMappings);
   }
   return data;
 }

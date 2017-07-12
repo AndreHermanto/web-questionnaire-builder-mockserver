@@ -31,15 +31,39 @@ var consentTypeMappingSchema= {
       "type": "string",
       "faker": "random.uuid"
     },
-    "questionnaireId": {
-      "type": "string",
-      "faker": "random.uuid"
+    "questionnaires": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          'questionnaireId',
+          'versionPublished'
+        ],
+        "properties": {
+          "questionnaireId": {
+            type: "string",
+            faker: "random.uuid"
+          },
+          "versionPublished": {
+            type: "string",
+            faker: "random.uuid"
+          }
+          // "order": {
+          //   type: "string",
+          //   faker: "random.uuid"
+          // }
+          // "constraintBy": {
+          //   type: "string",
+          //   faker: "random.uuid"
+          // }
+        }
+      }
     }
   },
   "required": [
     "id",
     "consentTypeId",
-    "questionnaireId"
+    "questionnaires"
   ]
 }
 exports.consentTypes = consentTypesSchema;
