@@ -52,6 +52,16 @@ server.post('/secure', (req, res) => {
   res.send(response);
 });
 
+//return data for generate the urls
+server.post('/secure/generate', (req, res) => {
+  const response = {
+    baseURL: 'https://selfassessment.sanfordhealth.org',
+    timestamp: Date.now(),
+    urls: []
+  };
+  res.send(response);
+});
+
 // add route for logging in
 server.post('/login', (req, res) => {
   // username: test
