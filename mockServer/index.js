@@ -54,10 +54,17 @@ server.post('/secure', (req, res) => {
 
 //return data for generate the urls
 server.post('/secure/generate', (req, res) => {
+  var urls = [];
+  for (var i = 0; i < req.body.count; i++) {
+    urls.push({
+      consentTypeId: req.body.consentTypeId,
+      userId: Math.random() * 100 + '',
+      timestamp: '1000'
+    });
+  }
   const response = {
     baseURL: 'https://selfassessment.sanfordhealth.org',
-    timestamp: Date.now(),
-    urls: []
+    urls: urls
   };
   res.send(response);
 });
