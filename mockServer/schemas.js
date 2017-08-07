@@ -220,12 +220,16 @@ var ontologySchema = {
         "type": "string",
         "faker": "lorem.words"
       },
+      "releaseVersion": {
+        "type": "string",
+        "faker": "lorem.words"
+      },
       "lastUpdatedBy": {
         "type": "string",
         "faker": "lorem.words"
       }
   },
-  "required": ["id", "acronym", "title", "updatePattern", "filterByPrefix"]
+  "required": ["id", "acronym", "title", "updatePattern", "filterByPrefix", "releaseVersion"]
 }
 
 var hpoCrStatusSchema = {
